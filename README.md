@@ -1,7 +1,7 @@
 # 🖼️ CNN-LSTM Image Captioning with PyTorch
 
-[![Python](https://img.shields.io/badge/Python-3.12.7%2B-blue?logo=python)](https://www.python.org/)
-[![PyTorch](https://img.shields.io/badge/PyTorch-2.5.1%2B-ee4c2c?logo=pytorch)](https://pytorch.org/)
+[![Python](https://img.shields.io/badge/Python-3.12.7-blue?logo=python)](https://www.python.org/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.5.1-ee4c2c?logo=pytorch)](https://pytorch.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 > **사진 한 장만 보여주면, AI가 문장으로 사진을 묘사합니다.**
