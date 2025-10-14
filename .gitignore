@@ -6,6 +6,9 @@ data_dir/
 *.zip
 *.json
 
+# 특정 파일/폴더 추적 예외 처리
+!results/sample_predictions/
+
 # 학습된 모델 체크포인트
 models_dir/
 *.ckpt
