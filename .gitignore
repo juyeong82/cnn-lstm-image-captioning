@@ -1,0 +1,56 @@
+# 데이터 파일 (coco dataset)
+data_dir/
+*.jpg
+*.jpeg
+*.png
+*.zip
+*.json
+
+# 학습된 모델 체크포인트
+models_dir/
+*.ckpt
+*.pth
+*.pkl
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# 환경 설정
+venv/
+env/
+ENV/
+.env
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
