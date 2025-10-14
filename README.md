@@ -73,21 +73,21 @@ ResNet-152 CNN Encoder와 LSTM Decoder를 결합한 이미지 캡셔닝 시스�
 
 <div style="text-align: center;">
     <h3>Image 1</h3>
-    <img src="results/sample_predictions/sample1.jpg" alt="Generated Caption Example 1" style="width: 80%; max-width: 600px; display: block; margin: 0 auto; border: 1px solid #ddd; border-radius: 4px; padding: 5px;">
+    <img src="results/sample_predictions/sample1.png" alt="Generated Caption Example 1" style="width: 80%; max-width: 600px; display: block; margin: 0 auto; border: 1px solid #ddd; border-radius: 4px; padding: 5px;">
     <p style="font-size: 1.2em; font-weight: bold; color: #333; margin-top: 10px;">Generated Caption: a man in a kitchen preparing food in a kitchen.</p>
     <br>
 </div>
 
 <div style="text-align: center;">
     <h3>Image 2</h3>
-    <img src="results/sample_predictions/sample2.jpg" alt="Generated Caption Example 2" style="width: 80%; max-width: 600px; display: block; margin: 0 auto; border: 1px solid #ddd; border-radius: 4px; padding: 5px;">
+    <img src="results/sample_predictions/sample2.png" alt="Generated Caption Example 2" style="width: 80%; max-width: 600px; display: block; margin: 0 auto; border: 1px solid #ddd; border-radius: 4px; padding: 5px;">
     <p style="font-size: 1.2em; font-weight: bold; color: #333; margin-top: 10px;">Generated Caption: a baseball player is swinging at a ball.</p>
     <br>
 </div>
 
 <div style="text-align: center;">
     <h3>Image 3</h3>
-    <img src="results/sample_predictions/sample3.jpg" alt="Generated Caption Example 3" style="width: 80%; max-width: 600px; display: block; margin: 0 auto; border: 1px solid #ddd; border-radius: 4px; padding: 5px;">
+    <img src="results/sample_predictions/sample3.png" alt="Generated Caption Example 3" style="width: 80%; max-width: 600px; display: block; margin: 0 auto; border: 1px solid #ddd; border-radius: 4px; padding: 5px;">
     <p style="font-size: 1.2em; font-weight: bold; color: #333; margin-top: 10px;">Generated Caption: a man riding a skateboard up the side of a ramp.</p>
     <br>
 </div>
