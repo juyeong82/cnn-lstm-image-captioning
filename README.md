@@ -75,9 +75,9 @@ ResNet-152 CNN Encoder와 LSTM Decoder를 결합한 이미지 캡셔닝 시스�
 
 | 입력 이미지 (Input Image) | 생성된 캡션 (Generated) | 실제 캡션 (Ground Truth) |
 | :----------------------------------------------------------: | :---------------------------------------------------------- | :---------------------------------------------------------- |
-| <img src="./results/sample_predictions/baseball.jpg" width="350"> | "A baseball player swings at a ball while the catcher is ready to catch the ball." | "A batter in a baseball game swings at a pitch as the catcher waits." |
-| <img src="./results/sample_predictions/skateboarding.jpg" width="350"> | "A person riding a skateboard on a ramp." | "A skateboarder performs a trick on a skate ramp." |
-| <img src="./results/sample_predictions/kitchen.jpg" width="350"> | "A man standing in a kitchen preparing food." | "Two men are in a kitchen, one is chopping vegetables on a cutting board." |
+| <img src="./results/sample_predictions/sample1.png" width="350"> | "A baseball player swings at a ball while the catcher is ready to catch the ball." | "A batter in a baseball game swings at a pitch as the catcher waits." |
+| <img src="./results/sample_predictions/sample2.png" width="350"> | "A person riding a skateboard on a ramp." | "A skateboarder performs a trick on a skate ramp." |
+| <img src="./results/sample_predictions/sample3.png" width="350"> | "A man standing in a kitchen preparing food." | "Two men are in a kitchen, one is chopping vegetables on a cutting board." |
 
 ---
 
