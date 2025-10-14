@@ -71,14 +71,31 @@ ResNet-152 CNN Encoder와 LSTM Decoder를 결합한 이미지 캡셔닝 시스�
 
 ### 예측 결과 샘플
 
-### 예측 결과 샘플 (정답 비교 포함)
+---
 
-| 입력 이미지 (Input Image) | 생성된 캡션 (Generated) | 실제 캡션 (Ground Truth) |
-| :----------------------------------------------------------: | :---------------------------------------------------------- | :---------------------------------------------------------- |
-| <img src="./results/sample_predictions/sample1.png" width="350"> | "A baseball player swings at a ball while the catcher is ready to catch the ball." | "A batter in a baseball game swings at a pitch as the catcher waits." |
-| <img src="./results/sample_predictions/sample2.png" width="350"> | "A person riding a skateboard on a ramp." | "A skateboarder performs a trick on a skate ramp." |
-| <img src="./results/sample_predictions/sample3.png" width="350"> | "A man standing in a kitchen preparing food." | "Two men are in a kitchen, one is chopping vegetables on a cutting board." |
+### Image 1
 
+![Generated Caption Example 1](https://example.com/path/to/image1.png)
+
+**Generated Caption:** a man in a kitchen preparing food in a kitchen.
+
+---
+
+### Image 2
+
+![Generated Caption Example 2](https://example.com/path/to/image2.png)
+
+**Generated Caption:** a baseball player is swinging at a ball.
+
+---
+
+### Image 3
+
+![Generated Caption Example 3](https://example.com/path/to/image3.png)
+
+**Generated Caption:** a man riding a skateboard up the side of a ramp.
+
+---
 ---
 
 ## 🚀 빠른 시작
