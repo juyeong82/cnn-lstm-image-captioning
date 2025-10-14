@@ -1,56 +1,39 @@
 # 🖼️ CNN-LSTM Image Captioning with PyTorch
 
-**이미지를 이해하고 자연어로 설명하는 딥러닝 모델**  
-ResNet-152 CNN Encoder와 LSTM Decoder를 결합한 이미지 캡셔닝 시스템
+[![Python](https://img.shields.io/badge/Python-3.12.7%2B-blue?logo=python)](https://www.python.org/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.5.1%2B-ee4c2c?logo=pytorch)](https://pytorch.org/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+
+> **사진 한 장만 보여주면, AI가 문장으로 사진을 묘사합니다.**
+>
+> 이 프로젝트는 ResNet-152 CNN Encoder와 LSTM Decoder를 결합하여 이미지의 핵심 내용을 파악하고 자연어 캡션을 생성하는 딥러닝 모델을 구현했습니다.
+
+---
+## 1. 샘플 예측 결과
+---
+### Image 1
+![Generated Caption Example 1](results/sample_predictions/sample1.png)
+
+---
+### Image 2
+![Generated Caption Example 2](results/sample_predictions/sample2.png)
+
+---
+### Image 3
+![Generated Caption Example 3](results/sample_predictions/sample3.png)
 
 ---
 
-## 📌 프로젝트 개요
+## 2. 프로젝트 개요
 
 이 프로젝트는 **Encoder-Decoder 아키텍처**를 사용하여 이미지의 내용을 자동으로 설명하는 자연어 문장을 생성합니다.
 
 ### 주요 특징
-- **CNN 인코더**: ImageNet으로 사전 학습된 ResNet-152를 사용하여 이미지 특징 추출
-- **LSTM 디코더**: 순환 신경망으로 문맥을 고려한 단어 시퀀스 생성
-- **COCO 데이터셋**: 약 41만 개의 이미지-캡션 쌍으로 학습
-- **Teacher Forcing**: 효율적인 학습을 위한 정답 기반 학습 전략
-- **Greedy Search**: 추론 시 단계별 최적 단어 선택
+- **CNN Encoder**: 사전 학습된 **ResNet-152** 모델을 사용하여 이미지에서 풍부한 시각적 특징(feature)을 추출합니다.
+- **lSTM Decoder**: 추출된 특징 벡터를 초기 입력으로 받아, **LSTM 네트워크**가 문맥에 맞는 단어를 순차적으로 생성합니다.
+- **대규모 데이터셋**: **MS COCO 2014** 데이터셋의 약 41만 개 이미지-캡션 쌍을 통해 학습하여 일반화 성능을 높였습니다.
 
 ---
-
-## 🏗️ 모델 아키텍처
-
-```
-
-┌─────────────┐      ┌──────────────┐      ┌────────────────┐
-
-│   입력 이미지  │  →  │  CNN Encoder │  →  │ 특징 벡터(256D) │
-
-│ (224×224×3) │      │ (ResNet-152) │      │                │
-
-└─────────────┘      └──────────────┘      └────────────────┘
-
-↓
-
-┌────────────────┐
-
-│ LSTM Decoder   │
-
-│ (Hidden: 512D) │
-
-└────────────────┘
-
-↓
-
-┌────────────────┐
-
-│ 생성된 캡션      │
-
-│ "A dog playing"│
-
-└────────────────┘
-
-```
 
 ### 데이터 흐름 (batch_size=128 기준)
 1. **이미지 입력**: `(128, 3, 224, 224)`
@@ -60,7 +43,7 @@ ResNet-152 CNN Encoder와 LSTM Decoder를 결합한 이미지 캡셔닝 시스�
 
 ---
 
-## 📊 학습 결과
+## 3. 학습 결과
 
 ### 성능 지표
 - **최종 Loss**: 2.1087
@@ -69,32 +52,9 @@ ResNet-152 CNN Encoder와 LSTM Decoder를 결합한 이미지 캡셔닝 시스�
 - **배치 크기**: 128
 - **Vocabulary Size**: 9,948개 단어
 
-### 예측 결과 샘플
-
-### Image 1
-
-![Generated Caption Example 1](results/sample_predictions/sample1.png)
-
-**Generated Caption:** a man in a kitchen preparing food in a kitchen.
-
 ---
 
-### Image 2
-
-![Generated Caption Example 2](results/sample_predictions/sample2.png)
-
-**Generated Caption:** a baseball player is swinging at a ball.
-
----
-
-### Image 3
-
-![Generated Caption Example 3](results/sample_predictions/sample3.png)
-
-**Generated Caption:** a man riding a skateboard up the side of a ramp.
----
-
-## 🚀 빠른 시작
+## 4. 설치 및 실행 방법
 
 ### 1. 환경 설정
 
@@ -152,31 +112,16 @@ cd ..
 
 ```
 
-from src.utils import build_vocabulary, save_vocabulary
-
-# 단어 사전 생성 (threshold=4: 4번 이상 등장한 단어만 포함)
-
-vocab = build_vocabulary(
-
-'data_dir/annotations/captions_train2014.json',
-
-threshold=4
-
-)
-
-# 저장
-
-save_vocabulary(vocab, 'data_dir/vocabulary.pkl')
-
-print(f"Vocabulary size: {len(vocab)}")  # 약 9,948개 단어
+python src/[build_vocab.py]
 
 ```
+
 
 ### 4. 모델 학습
 
 ```
 
-python src/[train.py](http://train.py)
+python src/[train.py]
 
 ```
 
@@ -199,125 +144,7 @@ Epoch [1/5], Step [3230/3236], Loss: 2.1087, Perplexity: 8.24
 
 ```
 
-python src/[evaluate.py](http://evaluate.py)
-
-```
-
-또는 Python 코드로:
-
-```
-
-from src.evaluate import generate_caption
-
-from src.models import CNNModel, LSTMModel
-
-from src.utils import load_vocabulary
-
-import torch
-
-from torchvision import transforms
-
-# 설정
-
-device = torch.device('cuda' if [torch.cuda.is](http://torch.cuda.is)_available() else 'cpu')
-
-transform = transforms.Compose([
-
-transforms.ToTensor(),
-
-transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225))
-
-])
-
-# 단어 사전 로드
-
-vocab = load_vocabulary('data_dir/vocabulary.pkl')
-
-# 모델 로드
-
-encoder = CNNModel(256).to(device)
-
-decoder = LSTMModel(256, 512, len(vocab), 1).to(device)
-
-encoder.load_state_dict(torch.load('models_dir/encoder-2-3000.ckpt'))
-
-decoder.load_state_dict(torch.load('models_dir/decoder-2-3000.ckpt'))
-
-# 캡션 생성
-
-caption = generate_caption(
-
-'path/to/your/image.jpg',
-
-encoder, decoder, vocab, device, transform
-
-)
-
-print(caption)
-
-```
-
----
-
-## 📂 프로젝트 구조
-
-```
-
-cnn-lstm-image-captioning/
-
-├── [README.md](http://README.md)                 # 프로젝트 설명서
-
-├── requirements.txt          # 의존성 패키지
-
-├── .gitignore               # Git 제외 파일
-
-│
-
-├── src/                     # 소스 코드
-
-│   ├── **init**.py          # 패키지 초기화
-
-│   ├── [models.py](http://models.py)            # CNNModel, LSTMModel 정의
-
-│   ├── [dataset.py](http://dataset.py)           # CustomCocoDataset, DataLoader
-
-│   ├── [train.py](http://train.py)             # 학습 스크립트
-
-│   ├── [evaluate.py](http://evaluate.py)          # 추론 및 평가
-
-│   └── [utils.py](http://utils.py)             # Vocab, 이미지 로딩 등
-
-│
-
-├── notebooks/               # Jupyter 노트북
-
-│   └── image_captioning_full.ipynb
-
-│
-
-├── data/                    # 데이터 폴더 (.gitignore)
-
-│   ├── train2014/           # COCO 학습 이미지
-
-│   ├── annotations/         # COCO annotation JSON
-
-│   └── vocabulary.pkl       # 구축된 단어 사전
-
-│
-
-├── models/                  # 학습된 모델 (.gitignore)
-
-│   ├── encoder-2-3000.ckpt  # 인코더 가중치
-
-│   └── decoder-2-3000.ckpt  # 디코더 가중치
-
-│
-
-└── results/                 # 결과물
-
-├── sample_predictions/  # 예측 결과 이미지
-
-└── training_logs/       # 학습 로그
+python src/[evaluate.py]
 
 ```
 
@@ -334,12 +161,9 @@ cnn-lstm-image-captioning/
 - **NLTK**: 자연어 토큰화 (punkt tokenizer)
 - **Pillow**: 이미지 로딩 및 리사이즈
 
-### 시각화
-- **matplotlib**: 결과 시각화
-
 ---
 
-## 📈 핵심 개념
+## 핵심 개념
 
 ### 1. Encoder-Decoder 아키텍처
 - **인코더 (CNN)**: 이미지 → 고정 길이 특징 벡터 (256차원)로 압축
@@ -382,49 +206,11 @@ packed = pack_padded_sequence(embeddings, lengths, batch_first=True)
 
 ---
 
-## 🔑 주요 클래스 및 함수
-
-### `src/[models.py](http://models.py)`
-
-**CNNModel**
-- `__init__(embedding_size)`: ResNet-152 기반 인코더 초기화
-- `forward(images)`: 이미지 → 특징 벡터 (256D) 변환
-
-**LSTMModel**
-- `__init__(embed_size, hidden_size, vocab_size, num_layers)`: LSTM 디코더 초기화
-- `forward(features, captions, lengths)`: 학습 시 사용 (Teacher Forcing)
-- `sample(features, states)`: 추론 시 캡션 생성 (Greedy Search)
-
-### `src/[dataset.py](http://dataset.py)`
-
-**CustomCocoDataset**
-- `__getitem__(idx)`: (이미지, 캡션) 쌍 반환
-
-**collate_function**
-- 가변 길이 캡션을 배치로 묶고 패딩 적용
-
-**get_loader**
-- DataLoader 생성 헬퍼 함수
-
-### `src/[utils.py](http://utils.py)`
-
-**Vocab**
-- `add_token(token)`: 단어 추가
-- `__call__(token)`: 단어 → 인덱스 변환
-
-**build_vocabulary**
-- COCO JSON에서 단어 사전 구축
-
-**load_image**
-- 추론용 이미지 전처리
-
----
-
 
 ## 📝 학습 하이퍼파라미터 튜닝
 ```
 
-# src/[train.py](http://train.py)의 config 수정
+# src/[train.py]의 config 수정
 
 config = {
 
@@ -449,16 +235,9 @@ config = {
 
 ---
 
-## 👤 작성자
+## 👤 개발자
 
 **Juyeong Park**  
-- Email: [ju0korea@korea.ac.kr](mailto:ju0korea@korea.ac.kr)
-- GitHub: [@juyeong82](https://github.com/juyeong82)
+- Email: [ju0korea@korea.ac.kr]
+- GitHub: [@juyeong82]
 
----
-
-## 📄 라이선스
-
-이 프로젝트는 MIT 라이선스 하에 공개되어 있습니다. 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
-
----
